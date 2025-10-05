@@ -15,10 +15,36 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
+  std::set<std::string> out;
+  std::string current;
 
+  rawWords.push_back(' ');
 
+  for(size_t i =0; i < rawWords.size() ; i++){
+    char c = rawWords[i];
+    
+    if(c >= 'A' && c <= 'Z'){
+      c = char(c - 'A' + 'a');
+    }
 
+    bool isLetter = (c >= 'a' && c <= 'z');
+    bool isDigit = (c >= '0' && c <= '9');
 
+    if(isLetter || isDigit ){
+      current.push_back(c);
+    }
+    else{
+      if(current.size() >=2){
+        out.insert(current);
+      }
+      current.clear();
+    }
+   
+  }
+  if(current.size() >=2){
+        out.insert(current);
+      }
+ return out;
 
 
 

@@ -128,11 +128,6 @@ std::string ProductBookParser::categoryID()
  * Your job to fill in the code to create a new book product
  * using the data members in this class and the parent ProductParser class
  */
-Product* ProductBookParser::makeProduct()
-{
-
-
-}
 
 
 ProductClothingParser::ProductClothingParser()
@@ -183,12 +178,6 @@ std::string ProductClothingParser::categoryID()
  * Your job to fill in the code to create a new clothing product
  * using the data members in this class and the parent ProductParser class
  */
-Product* ProductClothingParser::makeProduct()
-{
-
-
-
-}
 
 
 
@@ -245,6 +234,17 @@ std::string ProductMovieParser::categoryID()
  */
 Product* ProductMovieParser::makeProduct()
 {
+  return new Movie(prodName_, price_, qty_, genre_, rating_);
 
+}
+
+Product* ProductBookParser::makeProduct()
+{
+  return new Book(prodName_, price_, qty_, isbn_, author_);
+}
+
+Product* ProductClothingParser::makeProduct()
+{
+  return new Clothing(prodName_, price_, qty_, size_, brand_);
 
 }
